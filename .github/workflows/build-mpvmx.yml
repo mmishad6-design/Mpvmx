@@ -23,7 +23,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build installable Android APK
+    name: Build APKs for all Android CPU architectures
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -45,34 +45,44 @@ jobs:
       - name: Make Gradle wrapper executable
         run: chmod +x ./gradlew
 
-      - name: Build signed preview APK
+      - name: Build split and universal APKs
         run: ./gradlew assembleStandardPreview --stacktrace --no-daemon --max-workers=2
 
-      - name: Verify APK output
+      - name: Verify all architecture APKs and universal APK
         id: apk
         shell: bash
         run: |
           set -euo pipefail
-          apk="$(find app/build/outputs/apk/standard/preview -maxdepth 1 -type f -name '*.apk' | head -n 1)"
-          test -n "$apk"
-          echo "path=$apk" >> "$GITHUB_OUTPUT"
-          echo "APK_PATH=$apk" >> "$GITHUB_ENV"
-          ls -lh "$apk"
+          out="app/build/outputs/apk/standard/preview"
+          echo "APK files generated:"
+          find "$out" -maxdepth 1 -type f -name '*.apk' -printf '%f (%k KB)\\n' | sort
+          count="$(find "$out" -maxdepth 1 -type f -name '*.apk' | wc -l)"
+          if [ "$count" -lt 5 ]; then
+            echo "::error::Expected 4 architecture-specific APKs plus 1 universal APK; found $count."
+            exit 1
+          fi
+          for abi in armeabi-v7a arm64-v8a x86 x86_64; do
+            if ! find "$out" -maxdepth 1 -type f -name "*${abi}*.apk" | grep -q .; then
+              echo "::error::Missing APK for $abi"
+              exit 1
+            fi
+          done
+          echo "All APK variants are present."
 
-      - name: Upload APK artifact
+      - name: Upload all APKs as workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: mpvmx-preview-apk
-          path: ${{ steps.apk.outputs.path }}
+          name: mpvmx-all-android-apks
+          path: app/build/outputs/apk/standard/preview/*.apk
           if-no-files-found: error
           retention-days: 14
 
-      - name: Publish public GitHub pre-release
+      - name: Publish all APKs in public GitHub pre-release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: mpvmx-preview-${{ github.sha }}
           name: mpvmx Preview ${{ github.sha }}
           prerelease: true
           generate_release_notes: true
-          files: ${{ steps.apk.outputs.path }}
+          files: app/build/outputs/apk/standard/preview/*.apk
           fail_on_unmatched_files: true
