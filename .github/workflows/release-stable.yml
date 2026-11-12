@@ -2,6 +2,12 @@ name: Build and publish mpvmx Stable APK
 
 on:
   workflow_dispatch:
+    inputs:
+      publish_release:
+        description: "Publish the public Stable release after all checks pass"
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -121,6 +127,7 @@ jobs:
           retention-days: 30
 
       - name: Publish public Stable GitHub release
+        if: inputs.publish_release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v3.0.2.2
