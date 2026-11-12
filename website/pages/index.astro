@@ -1,6 +1,8 @@
 ---
 import {
   ArrowRight,
+  Send,
+  Users,
   BookOpen,
   Check,
   Cpu,
@@ -102,56 +104,6 @@ const builds = [
   },
 ];
 
-const showcaseGallery = [
-  {
-    image: "/images/showcase/player-controls.jpg",
-    alt: "mpvmx touch-first playback controls",
-    layout: "controls",
-    orientation: "landscape",
-    width: 2800,
-    height: 1260,
-  },
-  {
-    image: "/images/showcase/playlist-window.jpg",
-    alt: "mpvmx visual playback queue",
-    layout: "playlist",
-    orientation: "landscape",
-    width: 2800,
-    height: 1260,
-  },
-  {
-    image: "/images/showcase/chapter-navigation.jpg",
-    alt: "mpvmx chapter navigation controls",
-    layout: "chapters",
-    orientation: "landscape",
-    width: 2800,
-    height: 1260,
-  },
-  {
-    image: "/images/showcase/pip.png",
-    alt: "mpvmx picture-in-picture mode",
-    layout: "pip",
-    orientation: "portrait",
-    width: 720,
-    height: 1600,
-  },
-  {
-    image: "/images/showcase/music-player.jpg",
-    alt: "mpvmx music player",
-    layout: "music",
-    orientation: "portrait",
-    width: 1080,
-    height: 2400,
-  },
-  {
-    image: "/images/showcase/about-screen.jpg",
-    alt: "mpvmx About screen",
-    layout: "about",
-    orientation: "portrait",
-    width: 1260,
-    height: 2800,
-  },
-];
 ---
 
 <!doctype html>
@@ -225,7 +177,6 @@ const showcaseGallery = [
 
         <nav class="nav-links" aria-label="Primary navigation">
           <a href="#features">Features</a>
-          <a href="#showcase">Showcase</a>
           <a href="#builds">Builds</a>
           <a href="/docs">Docs</a>
         </nav>
@@ -292,35 +243,6 @@ const showcaseGallery = [
             </div>
           </div>
 
-          <!-- Hero Media Showcase Mockup -->
-          <div class="hero-media-wrapper">
-            <div class="mockup-frame">
-              <div class="mockup-bar">
-                <div class="mockup-dots">
-                  <span></span><span></span><span></span>
-                </div>
-                <span class="mockup-title">mpvmx Player View</span>
-                <span class="mockup-chip">4K HDR · 60fps</span>
-              </div>
-              <div class="mockup-image-container">
-                <img
-                  src="/images/showcase/tanjiro-playback.jpg"
-                  alt="Video playback in mpvmx"
-                  class="mockup-image"
-                  width="1920"
-                  height="1080"
-                />
-                <div class="mockup-overlay-badge left-badge">
-                  <Sliders size={15} />
-                  <span>Hold-for-Speed & Gesture Engine</span>
-                </div>
-                <div class="mockup-overlay-badge right-badge">
-                  <Sparkles size={15} />
-                  <span>Anime4K & HDR-toys Active</span>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -388,32 +310,6 @@ const showcaseGallery = [
                 <h3 class="card-title">{title}</h3>
                 <p class="card-body">{body}</p>
               </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <!-- App Screenshot Gallery Showcase -->
-      <section class="section showcase-section" id="showcase" aria-labelledby="showcase-title">
-        <div class="container">
-          <div class="section-header">
-            <p class="section-eyebrow">
-              <span class="eyebrow-line"></span> Complete Media Surface
-            </p>
-            <h2 id="showcase-title" class="section-title">
-              From your file system<br />
-              <span class="gradient-text">to the exact target frame.</span>
-            </h2>
-            <p class="section-subtitle">
-              Every screen is engineered for fast navigation, intuitive touch gestures, and deep media control.
-            </p>
-          </div>
-
-          <div class="showcase-bento" aria-label="mpvmx interface screenshots">
-            {showcaseGallery.map(({ image, alt, layout, orientation, width, height }) => (
-              <figure class:list={["showcase-tile", `showcase-tile--${layout}`, `showcase-tile--${orientation}`]}>
-                <img src={image} alt={alt} loading="lazy" width={width} height={height} />
-              </figure>
             ))}
           </div>
         </div>
@@ -583,6 +479,37 @@ const showcaseGallery = [
       </section>
     </main>
 
+      <!-- Mishad & Telegram Community -->
+      <section class="contact-section" id="community" aria-labelledby="contact-title">
+        <div class="container">
+          <div class="contact-heading">
+            <p class="section-eyebrow"><span class="eyebrow-line"></span> Get in touch</p>
+            <h2 id="contact-title" class="section-title">Connect with <span class="gradient-text">Mishad.</span></h2>
+            <p class="section-subtitle">Questions, feedback, or updates about mpvmx — reach out or join the community.</p>
+          </div>
+          <div class="contact-grid">
+            <a class="contact-card" href="https://t.me/xyz9825" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon"><Send size={22} /></span>
+              <span class="contact-label">Contact Mishad</span>
+              <strong>@xyz9825</strong>
+              <span class="contact-action">Send a Telegram message <ArrowRight size={15} /></span>
+            </a>
+            <a class="contact-card" href="https://t.me/mpvmx" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon"><Radio size={22} /></span>
+              <span class="contact-label">Official Channel</span>
+              <strong>mpvmx Updates</strong>
+              <span class="contact-action">Join the channel <ArrowRight size={15} /></span>
+            </a>
+            <a class="contact-card" href="https://t.me/mpvmxofficial" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon"><Users size={22} /></span>
+              <span class="contact-label">Community Group</span>
+              <strong>mpvmx Community</strong>
+              <span class="contact-action">Join the discussion <ArrowRight size={15} /></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
     <!-- Site Footer -->
     <footer class="site-footer">
       <div class="container footer-container">
@@ -600,7 +527,6 @@ const showcaseGallery = [
           <div class="footer-link-group">
             <h5>Product</h5>
             <a href="#features">Features</a>
-            <a href="#showcase">Screenshots</a>
             <a href="#builds">Build Variants</a>
             <a href={releaseUrl} target="_blank" rel="noopener noreferrer">Releases</a>
             <a href={previewUrl} target="_blank" rel="noopener noreferrer">Preview Builds</a>
@@ -614,6 +540,9 @@ const showcaseGallery = [
           </div>
           <div class="footer-link-group">
             <h5>Community</h5>
+            <a href="https://t.me/xyz9825" target="_blank" rel="noopener noreferrer">Contact Mishad · @xyz9825</a>
+            <a href="https://t.me/mpvmx" target="_blank" rel="noopener noreferrer">Telegram Channel</a>
+            <a href="https://t.me/mpvmxofficial" target="_blank" rel="noopener noreferrer">Telegram Group</a>
             <a href={repoUrl} target="_blank" rel="noopener noreferrer">GitHub Repository</a>
             <a href={`${repoUrl}/issues`} target="_blank" rel="noopener noreferrer">Issue Tracker</a>
             <a href="/docs/reference/support-and-contributing">Contributing</a>
@@ -623,7 +552,7 @@ const showcaseGallery = [
       </div>
 
       <div class="container footer-bottom">
-        <p>© {new Date().getFullYear()} Mishad · MISHAD EDITION. Based on the open-source mpvRx project. Licensed under AGPL-3.0-or-later.</p>
+        <p>© {new Date().getFullYear()} Mishad · MISHAD EDITION. Forked from the open-source mpvRx project; independently customized as MISHAD EDITION. Licensed under AGPL-3.0-or-later.</p>
         <div class="footer-bottom-links">
           <a href={repoUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
           <span class="footer-dot">·</span>
@@ -1857,6 +1786,80 @@ const showcaseGallery = [
     line-height: 1.55;
   }
 
+
+  /* Contact & Telegram community */
+  .contact-section {
+    padding: 96px 0;
+    border-top: 1px solid var(--border-subtle);
+    background: var(--bg-surface);
+  }
+
+  .contact-heading {
+    text-align: center;
+    margin: 0 auto 42px;
+    max-width: 720px;
+  }
+
+  .contact-heading .section-eyebrow {
+    justify-content: center;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 28px;
+    min-height: 210px;
+    border: 1px solid var(--border-medium);
+    border-radius: 16px;
+    background: var(--bg-surface-elevated);
+    color: var(--text-primary);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .contact-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-teal-bright);
+  }
+
+  .contact-icon {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    color: var(--accent-teal-bright);
+    background: var(--accent-teal-soft);
+  }
+
+  .contact-label {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .contact-card strong {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.25rem;
+  }
+
+  .contact-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: auto;
+    color: var(--accent-teal-bright);
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
   /* Footer */
   .site-footer {
     border-top: 1px solid var(--border-subtle);
@@ -2017,6 +2020,10 @@ const showcaseGallery = [
     }
 
     .builds-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
       grid-template-columns: 1fr;
     }
 
