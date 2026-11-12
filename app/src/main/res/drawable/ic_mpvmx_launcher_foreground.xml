@@ -21,7 +21,7 @@
     <path
         android:fillColor="#FFFFFFFF"
         android:pathData="M 390,650 L 390,365 C 390,348 410,340 424,351 L 530,435 L 636,351 C 651,340 670,350 670,368 L 670,650 L 600,650 L 600,453 L 530,509 L 460,453 L 460,650 Z"/>
-    <!-- Motion accent -->
+    <!-- Mishad motion accent -->
     <path
         android:fillColor="#FFB12CFF"
         android:pathData="M 370,710 C 470,630 575,565 705,510 C 620,580 510,652 370,710 Z"/>
