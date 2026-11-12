@@ -26,9 +26,9 @@ import {
 } from "@lucide/astro";
 import GitHubIcon from "../components/GitHubIcon.astro";
 
-const releaseUrl = "https://github.com/Riteshp2001/mpvRx/releases/latest";
-const repoUrl = "https://github.com/Riteshp2001/mpvRx";
-const previewUrl = "https://riteshp2001.github.io/mpvRx/#preview";
+const releaseUrl = "https://github.com/mmishad6-design/Mpvmx/releases/latest";
+const repoUrl = "https://github.com/mmishad6-design/Mpvmx";
+const previewUrl = "https://github.com/mmishad6-design/Mpvmx/releases";
 
 const capabilities = [
   {
@@ -105,7 +105,7 @@ const builds = [
 const showcaseGallery = [
   {
     image: "/images/showcase/player-controls.jpg",
-    alt: "mpvRx touch-first playback controls",
+    alt: "mpvmx touch-first playback controls",
     layout: "controls",
     orientation: "landscape",
     width: 2800,
@@ -113,7 +113,7 @@ const showcaseGallery = [
   },
   {
     image: "/images/showcase/playlist-window.jpg",
-    alt: "mpvRx visual playback queue",
+    alt: "mpvmx visual playback queue",
     layout: "playlist",
     orientation: "landscape",
     width: 2800,
@@ -121,7 +121,7 @@ const showcaseGallery = [
   },
   {
     image: "/images/showcase/chapter-navigation.jpg",
-    alt: "mpvRx chapter navigation controls",
+    alt: "mpvmx chapter navigation controls",
     layout: "chapters",
     orientation: "landscape",
     width: 2800,
@@ -129,7 +129,7 @@ const showcaseGallery = [
   },
   {
     image: "/images/showcase/pip.png",
-    alt: "mpvRx picture-in-picture mode",
+    alt: "mpvmx picture-in-picture mode",
     layout: "pip",
     orientation: "portrait",
     width: 720,
@@ -137,7 +137,7 @@ const showcaseGallery = [
   },
   {
     image: "/images/showcase/music-player.jpg",
-    alt: "mpvRx music player",
+    alt: "mpvmx music player",
     layout: "music",
     orientation: "portrait",
     width: 1080,
@@ -145,7 +145,7 @@ const showcaseGallery = [
   },
   {
     image: "/images/showcase/about-screen.jpg",
-    alt: "mpvRx About screen",
+    alt: "mpvmx About screen",
     layout: "about",
     orientation: "portrait",
     width: 1260,
@@ -161,18 +161,42 @@ const showcaseGallery = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="mpvRx is a focused Android media player powered by mpv, with expressive touch controls, HDR tone mapping, Anime4K shaders, network streaming, and Lua/JS scripting."
+      content="mpvmx is a free, open-source Android media player customized by Mishad. MISHAD EDITION brings video and music playback, subtitles, network streaming, advanced playback controls, and a built-in music sleep timer."
     />
     <meta name="theme-color" content="#0c0a14" />
-    <meta property="og:title" content="mpvRx - Android media, without the noise" />
+    <meta name="author" content="Mishad" />
+    <meta property="og:site_name" content="mpvmx — MISHAD EDITION" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:title" content="mpvmx — MISHAD EDITION | Android Media Player" />
     <meta property="og:description" content="libmpv precision, touch-first gesture controls, HDR shaders, network streaming, and open-source freedom on Android." />
     <meta property="og:image" content="/images/showcase/tanjiro-playback.jpg" />
-    <title>mpvRx | Android media, without the noise</title>
+    <title>mpvmx — MISHAD EDITION | Android Media Player</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "mpvmx",
+        "alternateName": ["mpvmx Mishad", "MISHAD EDITION mpvmx"],
+        "description": "A free, open-source Android media player customized by Mishad. Video and music playback, subtitles, streaming, and advanced playback controls.",
+        "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Android",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": {
+          "@type": "Person",
+          "name": "Mishad",
+          "url": "https://github.com/mmishad6-design"
+        },
+        "codeRepository": "https://github.com/mmishad6-design/Mpvmx",
+        "downloadUrl": "https://github.com/mmishad6-design/Mpvmx/releases/latest",
+        "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+        "sameAs": ["https://github.com/mmishad6-design/Mpvmx"]
+      }
+    </script>
     <link rel="icon" type="image/svg+xml" href="/images/icon.svg" />
     <script is:inline>
       (() => {
         try {
-          const savedTheme = localStorage.getItem("mpvrx-theme");
+          const savedTheme = localStorage.getItem("mpvmx-theme");
           const systemTheme = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
           document.documentElement.dataset.theme = savedTheme === "light" || savedTheme === "dark" ? savedTheme : systemTheme;
         } catch {
@@ -191,11 +215,11 @@ const showcaseGallery = [
     <!-- Site Header -->
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="/" aria-label="mpvRx home">
+        <a class="brand" href="/" aria-label="mpvmx home">
           <div class="brand-icon-wrap">
-            <img src="/images/icon.svg" alt="mpvRx solid purple icon" width="34" height="34" class="brand-img" />
+            <img src="/images/icon.svg" alt="mpvmx solid purple icon" width="34" height="34" class="brand-img" />
           </div>
-          <span class="brand-text">mpvRx</span>
+          <span class="brand-text">mpvmx</span>
           <span class="version-badge">v2.5.0</span>
         </a>
 
@@ -211,7 +235,7 @@ const showcaseGallery = [
             <Sun class="theme-icon theme-icon-sun" size={18} strokeWidth={1.9} />
             <Moon class="theme-icon theme-icon-moon" size={18} strokeWidth={1.9} />
           </button>
-          <a class="nav-icon-btn" href={repoUrl} target="_blank" rel="noopener noreferrer" aria-label="mpvRx on GitHub">
+          <a class="nav-icon-btn" href={repoUrl} target="_blank" rel="noopener noreferrer" aria-label="mpvmx on GitHub">
             <GitHubIcon size={18} />
             <span class="github-label">GitHub</span>
           </a>
@@ -237,13 +261,12 @@ const showcaseGallery = [
             </div>
 
             <h1 id="hero-title" class="hero-headline">
-              Android media,<br />
-              <span class="gradient-text">without the noise.</span>
+              mpvmx Android Media Player<br />
+              <span class="gradient-text">MISHAD EDITION.</span>
             </h1>
 
             <p class="hero-description">
-              The precision of <code class="inline-code">mpv</code> paired with a modern touch-first interface.
-              Zero ads, no analytics tracking, deep playback controls, 77+ bundled shaders, and full scripting freedom.
+              A free, open-source Android media player customized by Mishad. Enjoy video and music playback, subtitles, network streaming, advanced playback controls, and the built-in music sleep timer — all under the MISHAD EDITION identity.
             </p>
 
             <div class="hero-btn-row">
@@ -276,13 +299,13 @@ const showcaseGallery = [
                 <div class="mockup-dots">
                   <span></span><span></span><span></span>
                 </div>
-                <span class="mockup-title">mpvRx Player View</span>
+                <span class="mockup-title">mpvmx Player View</span>
                 <span class="mockup-chip">4K HDR · 60fps</span>
               </div>
               <div class="mockup-image-container">
                 <img
                   src="/images/showcase/tanjiro-playback.jpg"
-                  alt="Video playback in mpvRx"
+                  alt="Video playback in mpvmx"
                   class="mockup-image"
                   width="1920"
                   height="1080"
@@ -302,7 +325,7 @@ const showcaseGallery = [
       </section>
 
       <!-- Signal Stat Strip -->
-      <section class="stat-strip" aria-label="mpvRx key metrics">
+      <section class="stat-strip" aria-label="mpvmx key metrics">
         <div class="container stat-grid">
           <div class="stat-item">
             <div class="stat-icon-wrap"><Layers3 size={20} /></div>
@@ -347,7 +370,7 @@ const showcaseGallery = [
               <span class="gradient-text">Quiet everywhere else.</span>
             </h2>
             <p class="section-subtitle">
-              mpvRx keeps video content front and center. Advanced diagnostics, post-processing shaders,
+              mpvmx keeps video content front and center. Advanced diagnostics, post-processing shaders,
               and subtitle controls appear instantly when requested and disappear when you watch.
             </p>
           </div>
@@ -386,7 +409,7 @@ const showcaseGallery = [
             </p>
           </div>
 
-          <div class="showcase-bento" aria-label="mpvRx interface screenshots">
+          <div class="showcase-bento" aria-label="mpvmx interface screenshots">
             {showcaseGallery.map(({ image, alt, layout, orientation, width, height }) => (
               <figure class:list={["showcase-tile", `showcase-tile--${layout}`, `showcase-tile--${orientation}`]}>
                 <img src={image} alt={alt} loading="lazy" width={width} height={height} />
@@ -410,7 +433,7 @@ const showcaseGallery = [
                   Your files are never the product.
                 </h2>
                 <p class="philosophy-text">
-                  mpvRx is fully open source. It publishes every line of code, complete commit histories,
+                  mpvmx is fully open source. It publishes every line of code, complete commit histories,
                   and verifiable build variants on GitHub. No analytics SDKs, no ad banners, no subscription gates.
                 </p>
                 <div class="philosophy-links">
@@ -517,13 +540,13 @@ const showcaseGallery = [
           </div>
           <h2 class="final-cta-title">Make playback truly yours.</h2>
           <p class="final-cta-subtitle">
-            Get mpvRx on your Android phone, tablet, or TV. Built for enthusiasts who care about video quality, audio precision, and uncompromising control.
+            Get mpvmx on your Android phone, tablet, or TV. Built for enthusiasts who care about video quality, audio precision, and uncompromising control.
           </p>
 
           <div class="final-cta-actions">
             <a class="btn btn-primary btn-large" href={releaseUrl} target="_blank" rel="noopener noreferrer">
               <Download size={20} strokeWidth={2.2} />
-              <span>Download mpvRx APK</span>
+              <span>Download mpvmx APK</span>
             </a>
             <a class="btn btn-secondary btn-large" href="/docs/getting-started/first-playback">
               <BookOpen size={20} strokeWidth={2} />
@@ -537,7 +560,7 @@ const showcaseGallery = [
         <div class="container preview-channel-inner">
           <div class="preview-copy">
             <p class="preview-kicker"><Radio size={17} /> Preview channel</p>
-            <h2 id="preview-title">Try the next mpvRx build early.</h2>
+            <h2 id="preview-title">Try the next mpvmx build early.</h2>
             <p>
               Preview builds are signed and published from the latest selected source for testers who want new fixes and features before the next stable release.
             </p>
@@ -564,9 +587,9 @@ const showcaseGallery = [
     <footer class="site-footer">
       <div class="container footer-container">
         <div class="footer-brand-col">
-          <a class="brand" href="/" aria-label="mpvRx home">
-            <img src="/images/icon.svg" alt="mpvRx solid purple logo" width="30" height="30" class="brand-img" />
-            <span class="brand-text">mpvRx</span>
+          <a class="brand" href="/" aria-label="mpvmx home">
+            <img src="/images/icon.svg" alt="mpvmx solid purple logo" width="30" height="30" class="brand-img" />
+            <span class="brand-text">mpvmx</span>
           </a>
           <p class="footer-tagline">
             Focused Android media playback powered by libmpv. Open source under AGPL-3.0-or-later.
@@ -600,7 +623,7 @@ const showcaseGallery = [
       </div>
 
       <div class="container footer-bottom">
-        <p>© {new Date().getFullYear()} mpvRx contributors. Free software under AGPL-3.0.</p>
+        <p>© {new Date().getFullYear()} Mishad · MISHAD EDITION. Based on the open-source mpvRx project. Licensed under AGPL-3.0-or-later.</p>
         <div class="footer-bottom-links">
           <a href={repoUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
           <span class="footer-dot">·</span>
@@ -624,7 +647,7 @@ const showcaseGallery = [
 
       const applyTheme = (theme) => {
         root.dataset.theme = theme;
-        localStorage.setItem("mpvrx-theme", theme);
+        localStorage.setItem("mpvmx-theme", theme);
         updateThemeControl(theme);
       };
 
