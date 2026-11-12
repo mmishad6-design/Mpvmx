@@ -2,6 +2,12 @@ name: Build and publish mpvmx APK
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'app/**'
+      - '.github/workflows/build-mpvmx.yml'
   push:
     branches:
       - main
@@ -95,6 +101,7 @@ jobs:
           retention-days: 14
 
       - name: Publish all APKs in public GitHub pre-release
+        if: github.event_name != 'pull_request'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: mpvmx-preview-${{ github.sha }}
