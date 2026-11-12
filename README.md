@@ -2,10 +2,10 @@
   <img src="website/public/images/icon.svg" width="180" height="180" alt="mpvmx app icon" />
 </p>
 
-<h1 align="center">mpvmx</h1>
+<h1 align="center">mpvmx — MISHAD EDITION</h1>
 
 <p align="center">
-  <strong>A customizable Android media player, built on the open-source mpvRx project.</strong><br/>
+  <strong>A free, customizable Android media player by Mishad, built on the open-source mpvRx project.</strong><br/>
   Video, music, subtitles, playback controls and thoughtful quality-of-life features — without ads.<br/>
   <strong>MISHAD EDITION</strong>
 </p>
@@ -56,7 +56,7 @@ Some playback and rendering features depend on Android version, device hardware,
 
 ## Project identity
 
-**mpvmx** is a customized community fork of [mpvRx](https://github.com/Riteshp2001/mpvRx). The upstream project and its contributors provide the foundation for this app. This repository contains the mpvmx-specific branding, changes and additions.
+**mpvmx (MISHAD EDITION)** is a free, open-source Android media player customized and maintained by **Mishad** under the GitHub account [@mmishad6-design](https://github.com/mmishad6-design). If you are searching for **mpvmx Mishad**, **MISHAD EDITION**, or the **mpvmx Android player**, this is the official project repository.\n\nmpvmx is a customized community fork of [mpvRx](https://github.com/Riteshp2001/mpvRx). The upstream project and its contributors provide the foundation for this app. This repository contains the mpvmx-specific branding, changes and additions.
 
 - **Edition:** MISHAD EDITION
 - **Designed & customized by:** Mishad
