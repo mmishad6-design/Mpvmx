@@ -27,16 +27,29 @@
 
 Preview builds may contain unfinished changes. Check the release notes before installing.
 
-## What’s included
+## Features
 
-- Local video and audio playback powered by mpv.
-- Network streams, playlists, subtitle tracks and playback customization.
-- Gesture-based seeking, speed controls, picture-in-picture and background playback.
+### Video & audio playback
+- Play local video and audio files, powered by mpv.
+- Stream network media and use playlists.
+- Manage subtitle tracks and customize playback.
+- Use background playback and picture-in-picture where supported.
+
+### Built-in Music Player
+- A dedicated music listening experience with convenient playback controls.
+- **Built-in Music Sleep Timer:** set a 15, 30, 45 or 60-minute timer, or choose a custom duration.
+- When the timer reaches zero, mpvmx automatically pauses music playback — useful when listening before sleep.
+- The sleep timer is designed for music playback; it does not act as a general video sleep timer.
+
+### Player controls & customization
+- Gesture-based seeking and playback-speed controls.
+- Multiple themes and customizable player controls.
 - HDR rendering options, shaders and video upscaling features supported by the device.
 - Google Cast support where available.
-- Multiple themes and customizable player controls.
-- Music sleep timer to pause audio after a chosen duration.
+
+### Updates
 - In-app update checks connected to this repository’s GitHub Releases.
+- Download options for supported Android CPU architectures, including ARM64 and Universal builds.
 
 Some playback and rendering features depend on Android version, device hardware, codecs and the selected build.
 
