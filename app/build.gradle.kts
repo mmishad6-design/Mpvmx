@@ -59,6 +59,19 @@ val previewVersionCode =
   (releaseVersionCode + 1) * versionCodeBandSize +
     (getCommitCount().toIntOrNull() ?: 1).coerceIn(1, versionCodeBandSize - 2)
 
+// A persistent upload key is supplied only by GitHub Actions secrets or a local environment.
+// Never commit the keystore or its passwords. PR builds without secrets keep using the debug key.
+val mpvmxStoreFile = providers.environmentVariable("MPVMX_SIGNING_STORE_FILE").orNull
+val mpvmxStorePassword = providers.environmentVariable("MPVMX_SIGNING_STORE_PASSWORD").orNull
+val mpvmxKeyAlias = providers.environmentVariable("MPVMX_SIGNING_KEY_ALIAS").orNull
+val mpvmxKeyPassword = providers.environmentVariable("MPVMX_SIGNING_KEY_PASSWORD").orNull
+val hasMpvmxReleaseSigning =
+  !mpvmxStoreFile.isNullOrBlank() &&
+    !mpvmxStorePassword.isNullOrBlank() &&
+    !mpvmxKeyAlias.isNullOrBlank() &&
+    !mpvmxKeyPassword.isNullOrBlank() &&
+    rootProject.file(mpvmxStoreFile).isFile
+
 plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.kotlin.compose.compiler)
@@ -216,8 +229,20 @@ android {
     }
   }
 
+  signingConfigs {
+    if (hasMpvmxReleaseSigning) {
+      create("mpvmxRelease") {
+        storeFile = rootProject.file(mpvmxStoreFile!!)
+        storePassword = mpvmxStorePassword
+        keyAlias = mpvmxKeyAlias
+        keyPassword = mpvmxKeyPassword
+      }
+    }
+  }
+
   buildTypes {
     named("release") {
+      if (hasMpvmxReleaseSigning) signingConfig = signingConfigs.getByName("mpvmxRelease")
       buildConfigField("boolean", "IS_PREVIEW_BUILD", "false")
       buildConfigField("boolean", "IS_EXPERIMENTAL_BUILD", isExperimentalBuild.toString())
       if (isExperimentalBuild) versionNameSuffix = "-exp.r${getCommitCount()}"
@@ -236,7 +261,7 @@ android {
 
     create("preview") {
       initWith(getByName("release"))
-      signingConfig = signingConfigs.getByName("debug")
+      signingConfig = if (hasMpvmxReleaseSigning) signingConfigs.getByName("mpvmxRelease") else signingConfigs.getByName("debug")
       buildConfigField("boolean", "IS_PREVIEW_BUILD", "true")
       buildConfigField("boolean", "IS_EXPERIMENTAL_BUILD", "false")
       versionNameSuffix = "-beta.r${getCommitCount()}"
