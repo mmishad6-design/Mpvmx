@@ -1,0 +1,34 @@
+name: Import customized mpvRx source
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  import-source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout customized source
+        uses: actions/checkout@v4
+        with:
+          repository: mmishad6-design/mpvRx
+          ref: master
+          fetch-depth: 0
+          path: source
+
+      - name: Import full source and history into this repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          cd source
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add target "https://x-access-token:${GH_TOKEN}@github.com/${TARGET_REPOSITORY}.git"
+          git push --force target HEAD:main
