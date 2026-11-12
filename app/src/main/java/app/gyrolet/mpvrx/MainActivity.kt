@@ -379,7 +379,7 @@ open class MainActivity : AppCompatActivity() {
               ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                   Image(
-                    painter = painterResource(id = R.mipmap.ic_launcher_solid_purple),
+                    painter = painterResource(id = R.drawable.ic_launcher_solid_purple_foreground),
                     contentDescription = null,
                     modifier = Modifier.size(104.dp),
                   )
