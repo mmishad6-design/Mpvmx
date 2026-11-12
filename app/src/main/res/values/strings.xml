@@ -1803,7 +1803,8 @@
   <string name="ui_pan_zoom">Pan &amp; Zoom</string>
   <string name="ui_decrease_zoom">Decrease zoom</string>
   <string name="ui_increase_zoom">Increase zoom</string>
-  <string name="ui_designed_by_mishad">This app is designed by MISHAD</string>
+  <string name="ui_mishad_edition" translatable="false">MISHAD EDITION</string>
+  <string name="ui_designed_by_mishad">Designed &amp; customized by MISHAD</string>
   <string name="music_sleep_timer_title">Music Sleep Timer</string>
   <string name="music_sleep_timer_remaining">Pausing in %1$d min %2$d sec</string>
   <string name="music_sleep_timer_cancel">Cancel active timer</string>
