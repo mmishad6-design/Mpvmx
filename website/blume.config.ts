@@ -1,19 +1,19 @@
 import { defineConfig } from "blume";
 
 export default defineConfig({
-  title: "mpvRx",
+  title: "mpvmx — MISHAD EDITION",
   description:
-    "A focused Android media player powered by mpv, with deep playback controls, libraries, streaming, subtitles, and scripting.",
+    "mpvmx is a free, open-source Android media player customized by Mishad. Enjoy video and music playback, subtitles, streaming, playback controls, and a built-in music sleep timer.",
   logo: {
     href: "/",
     image: "/images/icon.svg",
-    text: "mpvRx",
+    text: "mpvmx",
   },
   banner: {
-    content: "mpvRx 2.5.0 is available",
+    content: "mpvmx — MISHAD EDITION",
     link: {
-      href: "https://github.com/Riteshp2001/mpvRx/releases/latest",
-      text: "View release",
+      href: "https://github.com/mmishad6-design/Mpvmx/releases/latest",
+      text: "Download Stable",
     },
   },
   content: {
@@ -22,18 +22,18 @@ export default defineConfig({
   navigation: {
     actions: [
       { href: "/docs", label: "Docs" },
-      { href: "https://github.com/Riteshp2001/mpvRx/releases", label: "Releases" },
+      { href: "https://github.com/mmishad6-design/Mpvmx/releases", label: "Releases" },
     ],
     cta: {
-      href: "https://github.com/Riteshp2001/mpvRx/releases/latest",
-      label: "Download",
+      href: "https://github.com/mmishad6-design/Mpvmx/releases/latest",
+      label: "Download mpvmx",
     },
     repo: true,
   },
   search: {
     provider: "orama",
     popular: [
-      { href: "/docs/getting-started/installation", icon: "download", label: "Install mpvRx" },
+      { href: "/docs/getting-started/installation", icon: "download", label: "Install mpvmx" },
       { href: "/docs/playback/controls-and-gestures", icon: "gamepad-2", label: "Player controls" },
       { href: "/docs/customization/custom-commands", icon: "terminal", label: "Scripting API" },
     ],
@@ -43,16 +43,16 @@ export default defineConfig({
     llmsTxt: {
       enabled: true,
       details:
-        "mpvRx is an Android media player built on libmpv. Use these docs for installation, playback, libraries, streaming, configuration, and the Lua/JavaScript bridge.",
+        "mpvmx (MISHAD EDITION) is a free, open-source Android media player customized by Mishad and based on the mpvRx project. These docs cover installation, video and music playback, subtitles, streaming, configuration, and scripting.",
     },
   },
   deployment: {
     output: "static",
   },
   github: {
-    owner: "Riteshp2001",
-    repo: "mpvRx",
-    branch: "master",
+    owner: "mmishad6-design",
+    repo: "Mpvmx",
+    branch: "main",
     dir: "website/content",
   },
   seo: {
@@ -66,16 +66,19 @@ export default defineConfig({
         muted: "#b8afd0",
       },
       titles: {
-        "/": "mpvRx - Android media, without the noise",
+        "/": "mpvmx — MISHAD EDITION | Android Media Player",
       },
     },
     software: {
       applicationCategory: "MultimediaApplication",
       license: "AGPL-3.0-or-later",
-      name: "mpvRx",
-      operatingSystem: "Android 8.0 and newer",
+      name: "mpvmx — MISHAD EDITION",
+      operatingSystem: "Android",
       price: 0,
-      sameAs: ["https://github.com/Riteshp2001/mpvRx"],
+      sameAs: [
+        "https://github.com/mmishad6-design/Mpvmx",
+        "https://github.com/mmishad6-design",
+      ],
     },
   },
   theme: {
