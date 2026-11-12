@@ -35,9 +35,11 @@ data class Release(
   @SerialName("commit_count") val commitCount: Int? = null,
   @SerialName("commit_sha") val commitSha: String? = null,
   @SerialName("updated_at") val updatedAt: String? = null,
+  @SerialName("prerelease") val prerelease: Boolean = false,
+  @SerialName("draft") val draft: Boolean = false,
 ) {
   val isPreview: Boolean
-    get() = channel.equals("preview", ignoreCase = true) || tagName.startsWith("preview-r")
+    get() = channel.equals("preview", ignoreCase = true) || tagName.startsWith("preview-r") || tagName.startsWith("mpvmx-preview-r", ignoreCase = true)
 
   val previewBuildNumber: Int?
     get() =
@@ -85,7 +87,8 @@ data class Release(
     get() {
       val channelName = ciChannelName ?: return assets
       val buildNumber = ciBuildNumber ?: return emptyList()
-      return assets.filter { it.name.startsWith("mpvRx-$channelName-r$buildNumber-", ignoreCase = true) }
+      // Each GitHub Release is an immutable build snapshot; all APK assets on that release belong to it.
+      return assets
     }
 
   companion object {
