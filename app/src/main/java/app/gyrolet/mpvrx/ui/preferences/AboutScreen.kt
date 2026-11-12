@@ -205,11 +205,24 @@ object AboutScreen : Screen {
                     color = cs.onPrimaryContainer.copy(alpha = 0.85f),
                   )
                   Spacer(Modifier.height(8.dp))
+                  Surface(
+                    color = cs.primary.copy(alpha = 0.12f),
+                    contentColor = cs.onPrimaryContainer,
+                    shape = RoundedCornerShape(50),
+                  ) {
+                    Text(
+                      text = stringResource(R.string.ui_mishad_edition),
+                      modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp),
+                      style = MaterialTheme.typography.labelMedium,
+                      fontWeight = FontWeight.Bold,
+                    )
+                  }
+                  Spacer(Modifier.height(4.dp))
                   Text(
                     text = stringResource(R.string.ui_designed_by_mishad),
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.bodySmall,
                     fontWeight = FontWeight.Medium,
-                    color = cs.onPrimaryContainer,
+                    color = cs.onPrimaryContainer.copy(alpha = 0.9f),
                   )
                   Text(
                     text = stringResource(R.string.ui_telegram_contact),
