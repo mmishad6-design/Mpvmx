@@ -1,0 +1,78 @@
+name: Build and publish mpvmx APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'app/**'
+      - 'gradle/**'
+      - 'build.gradle.kts'
+      - 'settings.gradle.kts'
+      - 'gradle.properties'
+      - 'gradlew'
+      - '.github/workflows/build-mpvmx.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: mpvmx-android-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build installable Android APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x ./gradlew
+
+      - name: Build signed preview APK
+        run: ./gradlew assembleStandardPreview --stacktrace --no-daemon --max-workers=2
+
+      - name: Verify APK output
+        id: apk
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk="$(find app/build/outputs/apk/standard/preview -maxdepth 1 -type f -name '*.apk' | head -n 1)"
+          test -n "$apk"
+          echo "path=$apk" >> "$GITHUB_OUTPUT"
+          echo "APK_PATH=$apk" >> "$GITHUB_ENV"
+          ls -lh "$apk"
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mpvmx-preview-apk
+          path: ${{ steps.apk.outputs.path }}
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Publish public GitHub pre-release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: mpvmx-preview-${{ github.sha }}
+          name: mpvmx Preview ${{ github.sha }}
+          prerelease: true
+          generate_release_notes: true
+          files: ${{ steps.apk.outputs.path }}
+          fail_on_unmatched_files: true
