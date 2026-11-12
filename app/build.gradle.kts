@@ -222,7 +222,8 @@ android {
 
   splits {
     abi {
-      isEnable = !isBundleBuild
+      // A single selected ABI is emitted as a normal standalone APK, not an ABI split.
+      isEnable = !isBundleBuild && activeAbis.size > 1
       reset()
       include(*activeAbis.toTypedArray())
       isUniversalApk = activeAbis.size > 1

@@ -74,6 +74,29 @@ jobs:
           MPVMX_SIGNING_KEY_PASSWORD: ${{ github.event_name == 'pull_request' && '' || secrets.MPVMX_SIGNING_KEY_PASSWORD }}
         run: ./gradlew assembleStandardPreview --stacktrace --no-daemon --max-workers=2
 
+      # Rebuild the ARM64 variant with ABI splits disabled. This produces a
+      # standalone ARM64-only APK while retaining the multi-ABI universal APK.
+      - name: Build standalone ARM64 APK
+        env:
+          MPVMX_SIGNING_STORE_FILE: ${{ runner.temp }}/mpvmx-release.jks
+          MPVMX_SIGNING_STORE_PASSWORD: ${{ github.event_name == 'pull_request' && '' || secrets.MPVMX_SIGNING_STORE_PASSWORD }}
+          MPVMX_SIGNING_KEY_ALIAS: ${{ github.event_name == 'pull_request' && '' || secrets.MPVMX_SIGNING_KEY_ALIAS }}
+          MPVMX_SIGNING_KEY_PASSWORD: ${{ github.event_name == 'pull_request' && '' || secrets.MPVMX_SIGNING_KEY_PASSWORD }}
+        run: |
+          set -euo pipefail
+          out='app/build/outputs/apk/standard/preview'
+          backup="${RUNNER_TEMP}/mpvmx-split-apks"
+          mkdir -p "$backup"
+          cp "$out"/*.apk "$backup"/
+          ./gradlew assembleStandardPreview -PtargetAbi=arm64-v8a --stacktrace --no-daemon --max-workers=2
+          standalone="$out/app-standard-preview.apk"
+          test -s "$standalone"
+          cp "$standalone" "$out/app-standard-arm64-v8a-standalone-preview.apk"
+          rm "$standalone"
+          # The second Gradle build cleans the APK output directory; restore
+          # the original ABI-split and universal APKs alongside the standalone one.
+          cp "$backup"/*.apk "$out"/
+
       - name: Verify APKs, signatures, and native ABI payloads
         shell: bash
         run: |
