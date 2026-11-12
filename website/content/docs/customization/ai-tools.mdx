@@ -1,0 +1,50 @@
+---
+title: AI and speech tools
+description: Configure optional AI providers for subtitle translation, formatting, file naming, and speech transcription.
+---
+
+mpvRx can connect to supported AI and speech providers for optional workflows. These features are not required for normal playback.
+
+## AI providers
+
+Supported integrations include OpenAI, Anthropic, Groq, OpenRouter, Together, OpenCode Zen, and a custom OpenAI-compatible provider. Available models, pricing, retention, rate limits, and regional access are controlled by each provider.
+
+Possible workflows include:
+
+- Subtitle translation with a custom instruction
+- Subtitle formatting cleanup
+- Structured file-renaming suggestions
+- Speech-to-subtitle generation through cloud or offline Whisper paths
+
+### Custom OpenAI-compatible provider
+
+Choose **Custom OpenAI-compatible** in the AI provider setting, then enter the API base URL, for example `https://example.com/v1`. Use the API prefix rather than the full `chat/completions` endpoint. Enter the API key in its separate field; it can be blank for a trusted server that does not require authentication. Prefer HTTPS, especially when sending a key or private text, and do not put credentials or query parameters in the base URL.
+
+Enter a model ID directly, or use **Fetch Models** if the server exposes `GET /models`. Discovery does not replace a manually entered model ID. If discovery is unsupported, its error remains visible, but manual selection and **Check Model Access** still work through `POST /chat/completions`.
+
+This provider supports text generation through Chat Completions, including renaming, subtitle formatting, and translation. It does not add Responses, image-generation, or audio-transcription support; the speech-to-text provider remains a separate setting. Changing the base URL clears that custom endpoint's model selection and model list so models from the previous server are not reused.
+
+## Configure safely
+
+<Steps>
+  <Step title="Choose a provider">
+    Review its privacy policy, pricing, and model support before creating credentials.
+  </Step>
+  <Step title="Add credentials in mpvRx">
+    Store the API key only in the provider setting. Do not embed it in a script, subtitle, filename, or issue report.
+  </Step>
+  <Step title="Test with non-sensitive content">
+    Start with a short file or subtitle and verify language, formatting, and cost behavior.
+  </Step>
+  <Step title="Review every result">
+    Generated text and filenames can be wrong. Keep the original material until the output is verified.
+  </Step>
+</Steps>
+
+:::warning[Data leaves the device]
+Cloud providers receive the text or audio needed for the selected operation. Offline Whisper avoids a cloud transcription request but still requires device resources and model support.
+:::
+
+## Troubleshooting
+
+Provider errors commonly come from an invalid key, unavailable model, unsupported endpoint, quota, rate limiting, or a response format the selected workflow cannot parse. Record the provider and model, but redact keys and private content when asking for support.
