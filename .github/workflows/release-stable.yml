@@ -84,10 +84,11 @@ jobs:
           echo 'Stable APK files generated:'
           find "$out" -maxdepth 1 -type f -name '*.apk' -printf '%f (%k KB)\n' | sort
           count="$(find "$out" -maxdepth 1 -type f -name '*.apk' | wc -l)"
-          if [ "$count" -lt 5 ]; then
-            echo "::error::Expected 4 ABI APKs plus 1 universal APK (and standalone ARM64); found $count."
+          if [ "$count" -lt 6 ]; then
+            echo "::error::Expected 4 ABI APKs, 1 universal APK, and 1 standalone ARM64 APK; found $count."
             exit 1
           fi
+          test -s "$out/app-standard-arm64-v8a-standalone-stable.apk" || { echo "::error::Standalone ARM64 APK is missing."; exit 1; }
           for abi in armeabi-v7a arm64-v8a x86 x86_64; do
             if ! find "$out" -maxdepth 1 -type f -name "*${abi}*.apk" | grep -q .; then
               echo "::error::Missing APK for $abi"
