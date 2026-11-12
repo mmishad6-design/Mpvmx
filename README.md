@@ -6,7 +6,8 @@
 
 <p align="center">
   <strong>A customizable Android media player, built on the open-source mpvRx project.</strong><br/>
-  Video, music, subtitles, playback controls and thoughtful quality-of-life features — without ads.
+  Video, music, subtitles, playback controls and thoughtful quality-of-life features — without ads.<br/>
+  <strong>MISHAD EDITION</strong>
 </p>
 
 <p align="center">
@@ -57,7 +58,8 @@ Some playback and rendering features depend on Android version, device hardware,
 
 **mpvmx** is a customized community fork of [mpvRx](https://github.com/Riteshp2001/mpvRx). The upstream project and its contributors provide the foundation for this app. This repository contains the mpvmx-specific branding, changes and additions.
 
-- **Designer:** Mishad
+- **Edition:** MISHAD EDITION
+- **Designed & customized by:** Mishad
 - **Contact:** [Telegram @xyz9825](https://t.me/xyz9825)
 - **Source repository:** [mmishad6-design/Mpvmx](https://github.com/mmishad6-design/Mpvmx)
 - **Upstream project:** [Riteshp2001/mpvRx](https://github.com/Riteshp2001/mpvRx)
@@ -89,6 +91,7 @@ mpvmx is distributed under **GNU Affero General Public License v3.0 or later (AG
 ---
 
 <p align="center">
-  <strong>This app is designed by MISHAD</strong><br/>
+  <strong>MISHAD EDITION</strong><br/>
+  Designed &amp; customized by MISHAD<br/>
   <a href="https://t.me/xyz9825">Telegram: @xyz9825</a>
 </p>
