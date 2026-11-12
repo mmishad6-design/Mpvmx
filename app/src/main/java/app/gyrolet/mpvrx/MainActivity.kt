@@ -25,6 +25,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.snap
@@ -173,8 +180,7 @@ open class MainActivity : AppCompatActivity() {
     startForResultOrToast(intent, requestCode) { target -> super.startActivityForResult(target, requestCode, options) }
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    // Match REX Player's splash handoff: use only Android's system SplashScreen and hand
-    // directly into the real UI. Do not draw a second Compose logo/title layer afterwards.
+    // Keep Android's native splash handoff, then briefly show the MISHAD EDITION identity.
     installSplashScreen()
     super.onCreate(savedInstanceState)
     openUpdateSheet = intent.getBooleanExtra("open_update_sheet", false)
@@ -346,6 +352,53 @@ open class MainActivity : AppCompatActivity() {
                   }
                 },
               )
+            }
+
+            var showBrandSplash by remember { mutableStateOf(true) }
+            LaunchedEffect(Unit) {
+              delay(1_150L)
+              showBrandSplash = false
+            }
+            val brandSplashAlpha by animateFloatAsState(
+              targetValue = if (showBrandSplash) 1f else 0f,
+              animationSpec = tween(durationMillis = 320, easing = FastOutSlowInEasing),
+              label = "MISHAD splash fade",
+            )
+            if (brandSplashAlpha > 0.01f) {
+              Box(
+                modifier = Modifier
+                  .fillMaxSize()
+                  .background(Color(0xFF080B14))
+                  .graphicsLayer {
+                    alpha = brandSplashAlpha
+                    val scale = 0.97f + (0.03f * brandSplashAlpha)
+                    scaleX = scale
+                    scaleY = scale
+                  },
+                contentAlignment = Alignment.Center,
+              ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                  Image(
+                    painter = painterResource(id = R.mipmap.ic_launcher_solid_purple),
+                    contentDescription = null,
+                    modifier = Modifier.size(104.dp),
+                  )
+                  Text(
+                    text = "MISHAD",
+                    color = Color.White,
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    letterSpacing = 5.sp,
+                  )
+                  Text(
+                    text = "MISHAD EDITION",
+                    color = Color(0xFFB7C1D8),
+                    fontSize = 10.sp,
+                    fontWeight = FontWeight.Medium,
+                    letterSpacing = 2.4.sp,
+                  )
+                }
+              }
             }
           }
         }
