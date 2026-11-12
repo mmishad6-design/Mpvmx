@@ -54,14 +54,11 @@ class UpdateManager(
     }
 
     val release =
-      getLatestRelease(
-        when (channel) {
-          AppUpdateChannel.STABLE -> STABLE_RELEASE_URL
-          AppUpdateChannel.PREVIEW -> PREVIEW_RELEASE_URL
-          AppUpdateChannel.EXPERIMENTAL -> EXPERIMENTAL_RELEASE_URL
-        },
-        allowMissing = channel == AppUpdateChannel.EXPERIMENTAL,
-      ) ?: return null
+      when (channel) {
+        AppUpdateChannel.STABLE -> getLatestRelease(STABLE_RELEASE_URL)
+        AppUpdateChannel.PREVIEW -> getLatestPreviewRelease(PREVIEW_RELEASE_URL)
+        AppUpdateChannel.EXPERIMENTAL -> getLatestRelease(EXPERIMENTAL_RELEASE_URL, allowMissing = true)
+      } ?: return null
     if (selectUpdateAsset(release) == null) {
       return null
     }
@@ -143,6 +140,17 @@ class UpdateManager(
       .putString(ignoredVersionKey(channel), version)
       .apply()
   }
+
+  /** GitHub exposes prereleases through the releases collection, not /releases/latest. */
+  private suspend fun getLatestPreviewRelease(url: String): Release? =
+    withContext(Dispatchers.IO) {
+      val request = Request.Builder().url(url).header("Cache-Control", "no-cache").build()
+      client.newCall(request).awaitResponse().use { response ->
+        if (!response.isSuccessful) throw IOException("Unexpected code $response")
+        json.decodeFromString<List<Release>>(response.body.string())
+          .firstOrNull { it.prerelease && !it.draft && it.isPreview }
+      }
+    }
 
   private suspend fun getLatestRelease(url: String, allowMissing: Boolean = false): Release? =
     withContext(Dispatchers.IO) {
@@ -443,8 +451,8 @@ class UpdateManager(
   }
 
   private companion object {
-    const val STABLE_RELEASE_URL = "https://api.github.com/repos/Riteshp2001/mpvRx/releases/latest"
-    const val PREVIEW_RELEASE_URL = "https://riteshp2001.github.io/mpvRx/latest.json"
+    const val STABLE_RELEASE_URL = "https://api.github.com/repos/mmishad6-design/Mpvmx/releases/latest"
+    const val PREVIEW_RELEASE_URL = "https://api.github.com/repos/mmishad6-design/Mpvmx/releases?per_page=20"
     const val EXPERIMENTAL_RELEASE_URL = "https://riteshp2001.github.io/mpvRx/experimental.json"
     const val LEGACY_IGNORED_VERSION_KEY = "ignored_version"
     const val PART_SUFFIX = ".part"

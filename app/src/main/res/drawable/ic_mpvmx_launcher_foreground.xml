@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <!-- Gradient play-frame, representing the media player -->
+    <path
+        android:fillType="evenOdd"
+        android:pathData="M 300,150 C 274,135 240,154 240,188 L 240,836 C 240,870 274,889 304,870 L 822,548 C 852,530 852,494 822,476 Z M 340,290 L 340,734 L 700,512 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="240" android:startY="150" android:endX="850" android:endY="870">
+                <item android:offset="0" android:color="#16DDF4"/>
+                <item android:offset="0.48" android:color="#315BFF"/>
+                <item android:offset="1" android:color="#A020F0"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- M for Mishad, integrated into the play symbol -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M 390,650 L 390,365 C 390,348 410,340 424,351 L 530,435 L 636,351 C 651,340 670,350 670,368 L 670,650 L 600,650 L 600,453 L 530,509 L 460,453 L 460,650 Z"/>
+    <!-- Mishad motion accent -->
+    <path
+        android:fillColor="#FFB12CFF"
+        android:pathData="M 370,710 C 470,630 575,565 705,510 C 620,580 510,652 370,710 Z"/>
+</vector>
