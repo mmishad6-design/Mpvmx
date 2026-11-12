@@ -21,14 +21,20 @@ jobs:
           fetch-depth: 0
           path: source
 
-      - name: Import full source and history into this repository
+      - name: Import source while preserving target workflows
         env:
           GH_TOKEN: ${{ github.token }}
           TARGET_REPOSITORY: ${{ github.repository }}
         run: |
           set -euo pipefail
           cd source
+          SOURCE_REF="$(git rev-parse HEAD)"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git remote add target "https://x-access-token:${GH_TOKEN}@github.com/${TARGET_REPOSITORY}.git"
-          git push --force target HEAD:main
+          git fetch target main
+          git checkout -B import-target FETCH_HEAD
+          git checkout "${SOURCE_REF}" -- . ':(exclude).github/workflows/**'
+          git add -A
+          git commit -m "Import customized mpvRx source for mpvmx"
+          git push target HEAD:main
