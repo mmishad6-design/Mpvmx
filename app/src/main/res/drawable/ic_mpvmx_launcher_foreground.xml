@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+    <!-- mpvmx custom mark: play frame + Mishad's M + purple motion accent -->
+    <path android:fillType="evenOdd"
+        android:pathData="M 270,170 C 240,170 218,194 218,226 L 218,798 C 218,830 244,854 276,854 L 748,854 C 780,854 804,830 804,798 L 804,704 C 804,680 790,660 770,646 L 408,388 C 378,366 340,388 340,424 L 340,708 L 270,708 Z M 340,286 L 340,286 L 340,286 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:type="linear" android:startX="220" android:startY="180" android:endX="810" android:endY="850">
+                <item android:offset="0" android:color="#12D8F5"/>
+                <item android:offset="0.52" android:color="#315BFF"/>
+                <item android:offset="1" android:color="#A020F0"/>
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M 360,690 L 360,360 C 360,344 379,335 392,345 L 512,435 L 632,345 C 646,335 664,345 664,362 L 664,690 L 590,690 L 590,452 L 512,511 L 434,452 L 434,690 Z"/>
+    <path
+        android:fillColor="#FF9B2CFF"
+        android:pathData="M 350,742 C 455,650 575,566 704,514 C 625,582 510,667 350,742 Z"/>
+    <path
+        android:fillColor="#FF071026"
+        android:pathData="M 750,250 L 790,250 L 790,290 L 750,290 Z M 810,310 L 850,310 L 850,350 L 810,350 Z M 750,370 L 790,370 L 790,410 L 750,410 Z"/>
+</vector>
