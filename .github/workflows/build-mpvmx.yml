@@ -54,7 +54,7 @@ jobs:
           set -euo pipefail
           out='app/build/outputs/apk/standard/preview'
           echo 'APK files generated:'
-          find "$out" -maxdepth 1 -type f -name '*.apk' -printf '%f (%k KB)\\n' | sort
+          find "$out" -maxdepth 1 -type f -name '*.apk' -printf '%f (%k KB)\n' | sort
           count="$(find "$out" -maxdepth 1 -type f -name '*.apk' | wc -l)"
           if [ "$count" -lt 5 ]; then
             echo "::error::Expected 4 architecture APKs plus 1 universal APK; found $count."
@@ -78,9 +78,11 @@ jobs:
           universal_apk="$(find "$out" -maxdepth 1 -type f -name '*universal*.apk' | head -n 1)"
           test -n "$arm64_apk"
           test -n "$universal_apk"
-          unzip -Z1 "$arm64_apk" | grep -Fq 'lib/arm64-v8a/'
+          arm64_entries="$(unzip -Z1 "$arm64_apk")"
+          universal_entries="$(unzip -Z1 "$universal_apk")"
+          grep -Fq 'lib/arm64-v8a/' <<< "$arm64_entries"
           for abi in arm64-v8a armeabi-v7a x86 x86_64; do
-            unzip -Z1 "$universal_apk" | grep -Fq "lib/$abi/" || { echo "::error::Universal APK missing $abi native libraries"; exit 1; }
+            grep -Fq "lib/$abi/" <<< "$universal_entries" || { echo "::error::Universal APK missing $abi native libraries"; exit 1; }
           done
           echo 'APK ZIP integrity, signatures, and native ABI payloads verified.'
 
