@@ -48,17 +48,16 @@ jobs:
       - name: Build split and universal APKs
         run: ./gradlew assembleStandardPreview --stacktrace --no-daemon --max-workers=2
 
-      - name: Verify all architecture APKs and universal APK
-        id: apk
+      - name: Verify APKs, signatures, and native ABI payloads
         shell: bash
         run: |
           set -euo pipefail
-          out="app/build/outputs/apk/standard/preview"
-          echo "APK files generated:"
+          out='app/build/outputs/apk/standard/preview'
+          echo 'APK files generated:'
           find "$out" -maxdepth 1 -type f -name '*.apk' -printf '%f (%k KB)\\n' | sort
           count="$(find "$out" -maxdepth 1 -type f -name '*.apk' | wc -l)"
           if [ "$count" -lt 5 ]; then
-            echo "::error::Expected 4 architecture-specific APKs plus 1 universal APK; found $count."
+            echo "::error::Expected 4 architecture APKs plus 1 universal APK; found $count."
             exit 1
           fi
           for abi in armeabi-v7a arm64-v8a x86 x86_64; do
@@ -67,53 +66,23 @@ jobs:
               exit 1
             fi
           done
-          echo "All APK variants are present."
-
-          build_tools="$(find "${ANDROID_HOME}/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
-          apksigner="${build_tools}/apksigner"
-          test -x "$apksigner" || { echo "::error::apksigner not found"; exit 1; }
-
+          build_tools="$(find "$ANDROID_HOME/build-tools" -mindepth 1 -maxdepth 1 -type d | sort -V | tail -n 1)"
+          apksigner="$build_tools/apksigner"
+          test -x "$apksigner"
           for apk in "$out"/*.apk; do
             echo "Checking $(basename "$apk")"
             unzip -t "$apk" >/dev/null
             "$apksigner" verify --verbose "$apk" >/dev/null
           done
-
           arm64_apk="$(find "$out" -maxdepth 1 -type f -name '*arm64-v8a*.apk' | head -n 1)"
           universal_apk="$(find "$out" -maxdepth 1 -type f -name '*universal*.apk' | head -n 1)"
-          test -n "$arm64_apk" && test -n "$universal_apk"
-
-          if ! unzip -Z1 "$arm64_apk" | grep -q '^lib/arm64-v8a/.*\.so
-      - name: Upload all APKs as workflow artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: mpvmx-all-android-apks
-          path: app/build/outputs/apk/standard/preview/*.apk
-          if-no-files-found: error
-          retention-days: 14
-
-      - name: Publish all APKs in public GitHub pre-release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: mpvmx-preview-${{ github.sha }}
-          name: mpvmx Preview ${{ github.sha }}
-          prerelease: true
-          generate_release_notes: true
-          files: app/build/outputs/apk/standard/preview/*.apk
-          fail_on_unmatched_files: true
-; then
-            echo "::error::ARM64 APK does not contain ARM64 native libraries."
-            exit 1
-          fi
-
+          test -n "$arm64_apk"
+          test -n "$universal_apk"
+          unzip -Z1 "$arm64_apk" | grep -Fq 'lib/arm64-v8a/'
           for abi in arm64-v8a armeabi-v7a x86 x86_64; do
-            if ! unzip -Z1 "$universal_apk" | grep -q "^lib/${abi}/.*\.so$"; then
-              echo "::error::Universal APK is missing native libraries for ${abi}."
-              exit 1
-            fi
+            unzip -Z1 "$universal_apk" | grep -Fq "lib/$abi/" || { echo "::error::Universal APK missing $abi native libraries"; exit 1; }
           done
-
-          echo "APK ZIP integrity, signatures, ARM64 payload, and all universal ABI payloads verified."
+          echo 'APK ZIP integrity, signatures, and native ABI payloads verified.'
 
       - name: Upload all APKs as workflow artifact
         uses: actions/upload-artifact@v4
