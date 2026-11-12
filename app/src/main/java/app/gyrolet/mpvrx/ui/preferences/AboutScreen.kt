@@ -100,7 +100,12 @@ object AboutScreen : Screen {
           if (BuildConfig.IS_PREVIEW_BUILD || BuildConfig.IS_EXPERIMENTAL_BUILD) value else value.substringBefore('-')
         }
         ?: BuildConfig.VERSION_NAME
-    val buildType = BuildConfig.BUILD_TYPE
+    val buildType =
+      when {
+        BuildConfig.IS_PREVIEW_BUILD -> "preview"
+        BuildConfig.IS_EXPERIMENTAL_BUILD -> "experimental"
+        else -> "stable"
+      }
     val githubRepoUrl = stringResource(R.string.github_repo_url)
     val privacyPolicyUrl = stringResource(R.string.privacy_policy_url)
     val settingsScrollState = rememberScrollState()
