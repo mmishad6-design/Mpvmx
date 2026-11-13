@@ -66,6 +66,7 @@ mpvmx is a customized community fork of [mpvRx](https://github.com/Riteshp2001/m
 - **Official Telegram channel:** [@mpvmx](https://t.me/mpvmx)
 - **Telegram community group:** [@mpvmxofficial](https://t.me/mpvmxofficial)
 - **Source repository:** [mmishad6-design/Mpvmx](https://github.com/mmishad6-design/Mpvmx)
+- **Official website:** [mpvmx.vercel.app](https://mpvmx.vercel.app)
 - **Upstream project:** [Riteshp2001/mpvRx](https://github.com/Riteshp2001/mpvRx)
 
 Upstream copyright notices, license terms and required attributions are retained. See [CITATION.md](CITATION.md) for project acknowledgments and [LICENSE](LICENSE) for the full GNU Affero General Public License.
