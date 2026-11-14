@@ -1,22 +1,24 @@
-# Credits and citation information
+# Mpvmx credits and citation information
 
-mpvRx is part of an open-source media ecosystem. This page preserves the project's acknowledgments and links to the people and projects being credited.
+Mpvmx (MISHAD EDITION) is an open-source Android media player. It builds on prior open-source work and third-party projects; their copyright notices and license terms must remain respected.
 
-## Citing mpvRx
+## Citing Mpvmx
 
-When mentioning, reviewing, or building on mpvRx, link to the [project repository](https://github.com/Riteshp2001/mpvRx). Include the release tag or commit you used so others can identify the same version.
+When mentioning, reviewing, or building on Mpvmx, link to the [Mpvmx repository](https://github.com/mmishad6-design/Mpvmx). Include the release tag or commit you used so others can identify the same version.
 
 Suggested plain-text reference:
 
 ```text
-mpvRx contributors. mpvRx — Android video and music player.
-https://github.com/Riteshp2001/mpvRx
+Mishad and Mpvmx contributors. Mpvmx (MISHAD EDITION) — Android media player.
+https://github.com/mmishad6-design/Mpvmx
 Version: <release tag or commit hash>
 ```
 
-## Open-source acknowledgments
+## Upstream and open-source acknowledgments
 
-The groups below organize the existing credits by project type; they are not an exhaustive dependency inventory or a claim that every project is bundled in the app.
+Mpvmx contains adapted work originating from the [mpvRx project](https://github.com/RiteshPandit/mpvRx) and other open-source projects. This upstream attribution is retained here so the original work and its contributors are not misrepresented or deprived of credit.
+
+The groups below organize project credits; they are not an exhaustive dependency inventory or a claim that every project is bundled in the app.
 
 ### Playback & player projects
 
@@ -52,12 +54,12 @@ The groups below organize the existing credits by project type; they are not an 
 |---|---|
 | [SunnyVishnu3](https://github.com/SunnyVishnu3) | `yt-dlp` native integration and SDK 29+ bypass logic |
 
-Thank you also to everyone contributing code, translations, documentation, bug reports, and testing. The [GitHub contributor history](https://github.com/Riteshp2001/mpvRx/graphs/contributors) records repository contributions.
+Thank you to everyone contributing code, translations, documentation, bug reports, and testing. The [Mpvmx contributor history](https://github.com/mmishad6-design/Mpvmx/graphs/contributors) records contributions to this repository.
 
 ## Keeping credits accurate
 
 Preserve upstream copyright and license notices when adapting code or assets. These acknowledgments supplement, rather than replace, the [project license](LICENSE) and notices accompanying third-party work.
 
-If a credit is missing or incorrect, [open an issue](https://github.com/Riteshp2001/mpvRx/issues/new) or a pull request with the relevant source link and the attribution to add or correct.
+If a credit is missing or incorrect, [open an issue](https://github.com/mmishad6-design/Mpvmx/issues/new) or a pull request with the relevant source link and the attribution to add or correct.
 
 [Back to the README](README.md#acknowledgments)
