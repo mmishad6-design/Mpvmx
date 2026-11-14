@@ -1,33 +1,23 @@
 cff-version: 1.2.0
-message: "If you use mpvRx, please cite it using the metadata below."
+message: "If you use mpvmx, please cite this project using the metadata below."
 type: software
-title: "mpvRx"
-abstract: "An Android video and music player powered by mpv."
+title: "mpvmx — MISHAD EDITION"
+abstract: "An open-source Android video and music player maintained by Mishad, with a built-in music sleep timer."
 authors:
-  - name: "Ritesh Pandit"
-repository-code: "https://github.com/Riteshp2001/mpvRx"
-url: "https://riteshp2001.github.io/mpvRx"
+  - name: "Mishad"
+repository-code: "https://github.com/mmishad6-design/Mpvmx"
+url: "https://mpvmx.vercel.app"
 license: AGPL-3.0-or-later
 keywords:
   - Android
-  - Anime4K
-  - BitTorrent
-  - Chromecast
-  - Google Cast
   - HDR
-  - Jellyfin
   - Jetpack Compose
   - Kotlin
-  - Navidrome
-  - SMB
-  - Subsonic
-  - Vulkan
-  - WebDAV
-  - libmpv
+  - MISHAD EDITION
+  - mpv
+  - mpvmx
   - media player
-  - media streaming
   - music player
-  - speech-to-text
+  - music sleep timer
   - subtitles
   - video player
-  - yt-dlp
