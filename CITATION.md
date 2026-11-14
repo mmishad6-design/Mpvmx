@@ -1,20 +1,22 @@
 # Credits and citation information
 
-mpvRx is part of an open-source media ecosystem. This page preserves the project's acknowledgments and links to the people and projects being credited.
+mpvmx (MISHAD EDITION) is an open-source Android media player maintained by Mishad. This page explains how to cite this repository and acknowledges upstream projects and other open-source work used by the project.
 
-## Citing mpvRx
+## Citing mpvmx
 
-When mentioning, reviewing, or building on mpvRx, link to the [project repository](https://github.com/Riteshp2001/mpvRx). Include the release tag or commit you used so others can identify the same version.
+When mentioning, reviewing, or building on mpvmx, link to this repository. Include the release tag or commit you used so others can identify the same version.
 
 Suggested plain-text reference:
 
 ```text
-mpvRx contributors. mpvRx — Android video and music player.
-https://github.com/Riteshp2001/mpvRx
+Mishad. mpvmx — MISHAD EDITION: Android video and music player.
+https://github.com/mmishad6-design/Mpvmx
 Version: <release tag or commit hash>
 ```
 
-## Open-source acknowledgments
+## Upstream project and open-source acknowledgments
+
+mpvmx is a customized community fork built on the open-source [mpvRx project](https://github.com/Riteshp2001/mpvRx), alongside other projects listed below. These acknowledgments preserve attribution to the original authors and upstream work; they do not mean that this repository is the upstream mpvRx project.
 
 The groups below organize the existing credits by project type; they are not an exhaustive dependency inventory or a claim that every project is bundled in the app.
 
@@ -52,12 +54,12 @@ The groups below organize the existing credits by project type; they are not an 
 |---|---|
 | [SunnyVishnu3](https://github.com/SunnyVishnu3) | `yt-dlp` native integration and SDK 29+ bypass logic |
 
-Thank you also to everyone contributing code, translations, documentation, bug reports, and testing. The [GitHub contributor history](https://github.com/Riteshp2001/mpvRx/graphs/contributors) records repository contributions.
+Thank you also to everyone contributing code, translations, documentation, bug reports, and testing. The [mpvmx contributor history](https://github.com/mmishad6-design/Mpvmx/graphs/contributors) records contributions to this repository.
 
 ## Keeping credits accurate
 
 Preserve upstream copyright and license notices when adapting code or assets. These acknowledgments supplement, rather than replace, the [project license](LICENSE) and notices accompanying third-party work.
 
-If a credit is missing or incorrect, [open an issue](https://github.com/Riteshp2001/mpvRx/issues/new) or a pull request with the relevant source link and the attribution to add or correct.
+If a credit is missing or incorrect, [open an issue](https://github.com/mmishad6-design/Mpvmx/issues/new) or a pull request with the relevant source link and the attribution to add or correct.
 
 [Back to the README](README.md#acknowledgments)
