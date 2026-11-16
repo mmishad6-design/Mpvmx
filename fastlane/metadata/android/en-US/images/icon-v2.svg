@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+<title id="title">mpvmx app icon</title>
+<desc id="desc">A white M integrated with a cyan, blue and purple play symbol on a dark rounded background.</desc>
+<defs>
+  <linearGradient id="play" x1="180" y1="150" x2="850" y2="880" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#16DDF4"/><stop offset=".48" stop-color="#315BFF"/><stop offset="1" stop-color="#A020F0"/>
+  </linearGradient>
+  <linearGradient id="accent" x1="350" y1="700" x2="760" y2="480" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#A020F0"/><stop offset="1" stop-color="#FFB12C"/>
+  </linearGradient>
+</defs>
+<rect width="1024" height="1024" rx="220" fill="#17132B"/>
+<path d="M250 160C250 128 285 110 312 128L835 472C864 491 864 533 835 552L312 896C285 914 250 896 250 864V160Z" fill="url(#play)"/>
+<path d="M390 650V365C390 348 410 340 424 351L530 435L636 351C651 340 670 350 670 368V650H600V453L530 509L460 453V650H390Z" fill="#fff"/>
+<path d="M370 710C470 630 575 565 705 510C620 580 510 652 370 710Z" fill="url(#accent)"/>
+</svg>
