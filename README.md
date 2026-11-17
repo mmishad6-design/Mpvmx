@@ -71,6 +71,15 @@ mpvmx is a customized community fork of [mpvRx](https://github.com/Riteshp2001/m
 
 Upstream copyright notices, license terms and required attributions are retained. See [CITATION.md](CITATION.md) for project acknowledgments and [LICENSE](LICENSE) for the full GNU Affero General Public License.
 
+## Support the project
+
+If you would like to support mpvmx development, you can send a voluntary contribution using the following address:
+
+- **Network:** BNB Smart Chain (BEP-20) only
+- **Address:** `0x33D54Fe1bb30657De7214B0581cA6D8fC9e65b8D`
+
+Please verify the network before sending. Do not send assets over another network to this address.
+
 ## Build from source
 
 ### Requirements
