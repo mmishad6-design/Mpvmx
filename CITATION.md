@@ -48,6 +48,10 @@ The groups below organize project credits; they are not an exhaustive dependency
 | hdr-toys | [natural-harmonia-gropius/hdr-toys](https://github.com/natural-harmonia-gropius/hdr-toys) |
 | anacrolix/torrent | [anacrolix/torrent](https://github.com/anacrolix/torrent) |
 
+### Special thanks — mpvRx contributors
+
+Arnab Sadhukhan · Utsav · SunnyVishnu3
+
 ### Individual contributions
 
 | Contributor | Acknowledgment |
