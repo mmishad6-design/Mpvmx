@@ -1812,6 +1812,7 @@
   <string name="ui_crypto_support_summary">Support mpvmx development with a voluntary crypto contribution.</string>
   <string name="ui_bep20_network">BNB Smart Chain · BEP-20</string>
   <string name="ui_copy_wallet_address">Copy BEP-20 Address</string>
+  <string name="ui_crypto_network_warning">Send only through BNB Smart Chain (BEP-20). Using another network may cause permanent loss.</string>
   <string name="ui_mishad_edition" translatable="false">MISHAD EDITION</string>
   <string name="ui_designed_by_mishad">Designed &amp; customized by MISHAD</string>
   <string name="music_sleep_timer_title">Music Sleep Timer</string>
