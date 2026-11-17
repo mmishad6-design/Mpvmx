@@ -130,6 +130,12 @@ android {
         abiFilters += activeAbis
       }
     }
+
+    // Also filter prebuilt JNI libraries (for example Python's libpython.so).
+    // CMake abiFilters alone do not restrict jniLibs copied from source sets.
+    ndk {
+      abiFilters += activeAbis
+    }
   }
 
   externalNativeBuild {
