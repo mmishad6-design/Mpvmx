@@ -517,6 +517,7 @@ const builds = [
               <span class="contact-label">Treat Me a Coffee</span>
               <strong>BNB Smart Chain · BEP-20</strong>
               <strong class="wallet-address">0x33D54Fe1bb30657De7214B0581cA6D8fC9e65b8D</strong>
+              <span class="wallet-network-warning">Send only through BNB Smart Chain (BEP-20).</span>
               <span class="contact-action">View wallet on BscScan <ArrowRight size={15} /></span>
             </a>
           </div>
@@ -1856,6 +1857,12 @@ const builds = [
     color: var(--text-muted);
     font-size: 0.82rem;
     font-weight: 600;
+  }
+
+  .contact-card .wallet-network-warning {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    line-height: 1.45;
   }
 
   .contact-card .wallet-address {
