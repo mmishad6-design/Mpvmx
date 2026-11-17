@@ -1234,8 +1234,8 @@
   <string name="pref_section_support">Support</string>
   <string name="pref_section_updates">Updates</string>
   <string name="pref_section_system">System</string>
-  <string name="pref_hall_of_fame_title">Hall of Fame</string>
-  <string name="pref_hall_of_fame_summary">Creators, contributors and community</string>
+  <string name="pref_hall_of_fame_title">Developer Info</string>
+  <string name="pref_hall_of_fame_summary">Meet the developer, join the community and support mpvmx</string>
   <string name="hall_of_fame_original_developer">mpvEx original developer</string>
   <string name="hall_of_fame_maintainer">mpvRx maintainer</string>
   <string name="hall_of_fame_featured_contributors">Featured contributors</string>
@@ -3232,4 +3232,9 @@
   <string name="player_skip_credits">Skip credits</string>
   <string name="player_skip_preview">Skip preview</string>
   <string name="player_skip_automatic">%1$s (automatic)</string>
+
+  <string name="ui_developer_name">Mishad</string>
+  <string name="ui_developer_github">GitHub Profile</string>
+  <string name="ui_developer_telegram_community">Telegram Community</string>
+  <string name="ui_developer_thanks_mpvrx">Thanks to the mpvRx Team</string>
 </resources>
