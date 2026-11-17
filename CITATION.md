@@ -16,7 +16,7 @@ Version: <release tag or commit hash>
 
 ## Upstream and open-source acknowledgments
 
-Mpvmx contains adapted work originating from the [mpvRx project](https://github.com/RiteshPandit/mpvRx) and other open-source projects. This upstream attribution is retained here so the original work and its contributors are not misrepresented or deprived of credit.
+Mpvmx contains adapted work originating from the [mpvRx project](https://github.com/Riteshp2001/mpvRx) and other open-source projects. This upstream attribution is retained here so the original work and its contributors are not misrepresented or deprived of credit.
 
 The groups below organize project credits; they are not an exhaustive dependency inventory or a claim that every project is bundled in the app.
 
