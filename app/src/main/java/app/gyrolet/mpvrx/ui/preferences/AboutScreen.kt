@@ -588,6 +588,11 @@ object AboutScreen : Screen {
               fontWeight = FontWeight.SemiBold,
               color = MaterialTheme.colorScheme.onSurface,
             )
+            Text(
+              text = stringResource(R.string.ui_crypto_network_warning),
+              style = MaterialTheme.typography.bodySmall,
+              color = MaterialTheme.colorScheme.error,
+            )
             Button(
               onClick = {
                 SafeClipboard.copyPlainText(
