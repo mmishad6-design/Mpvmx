@@ -3233,6 +3233,7 @@
   <string name="player_skip_preview">Skip preview</string>
   <string name="player_skip_automatic">%1$s (automatic)</string>
 
+  <string name="ui_developer_info">Developer</string>
   <string name="ui_developer_name">Mishad</string>
   <string name="ui_developer_github">GitHub Profile</string>
   <string name="ui_developer_telegram_community">Telegram Community</string>
