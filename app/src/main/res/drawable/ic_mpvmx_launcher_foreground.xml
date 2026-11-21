@@ -5,24 +5,48 @@
     android:height="108dp"
     android:viewportWidth="1024"
     android:viewportHeight="1024">
-    <!-- Gradient play-frame, representing the media player -->
+
+    <!-- Cyan-to-violet rounded media frame. Kept inside the adaptive-icon safe area. -->
     <path
-        android:fillType="evenOdd"
-        android:pathData="M 300,150 C 274,135 240,154 240,188 L 240,836 C 240,870 274,889 304,870 L 822,548 C 852,530 852,494 822,476 Z M 340,290 L 340,734 L 700,512 Z">
-        <aapt:attr name="android:fillColor">
-            <gradient android:type="linear" android:startX="240" android:startY="150" android:endX="850" android:endY="870">
-                <item android:offset="0" android:color="#16DDF4"/>
-                <item android:offset="0.48" android:color="#315BFF"/>
-                <item android:offset="1" android:color="#A020F0"/>
+        android:fillColor="#00000000"
+        android:pathData="M 190,120 C 145,120 120,155 120,200 L 120,824 C 120,869 155,904 200,904 L 824,904 C 869,904 904,869 904,824 L 904,200 C 904,155 869,120 824,120 Z"
+        android:strokeWidth="34">
+        <aapt:attr name="android:strokeColor">
+            <gradient android:type="linear" android:startX="120" android:startY="150" android:endX="900" android:endY="900">
+                <item android:offset="0" android:color="#FF00D9F5"/>
+                <item android:offset="0.48" android:color="#FF245BFF"/>
+                <item android:offset="1" android:color="#FFE000FF"/>
             </gradient>
         </aapt:attr>
     </path>
-    <!-- M for Mishad, integrated into the play symbol -->
+
+    <!-- Film strip motif behind the M. -->
     <path
-        android:fillColor="#FFFFFFFF"
-        android:pathData="M 390,650 L 390,365 C 390,348 410,340 424,351 L 530,435 L 636,351 C 651,340 670,350 670,368 L 670,650 L 600,650 L 600,453 L 530,509 L 460,453 L 460,650 Z"/>
-    <!-- Mishad motion accent -->
+        android:fillColor="#00000000"
+        android:strokeColor="#AA245BFF"
+        android:strokeWidth="34"
+        android:strokeLineCap="round"
+        android:pathData="M 155,675 C 265,560 360,455 490,350 C 620,245 745,190 875,205"/>
     <path
-        android:fillColor="#FFB12CFF"
-        android:pathData="M 370,710 C 470,630 575,565 705,510 C 620,580 510,652 370,710 Z"/>
+        android:fillColor="#00000000"
+        android:strokeColor="#AA7427FF"
+        android:strokeWidth="34"
+        android:strokeLineCap="round"
+        android:pathData="M 150,740 C 270,620 375,520 510,415 C 640,315 755,265 875,270"/>
+
+    <!-- Film perforations. -->
+    <path android:fillColor="#FF050511" android:pathData="M 240,590 L 280,550 L 310,580 L 270,620 Z M 330,505 L 370,465 L 400,495 L 360,535 Z M 420,425 L 460,390 L 490,420 L 450,455 Z M 520,345 L 560,315 L 590,345 L 550,375 Z M 625,275 L 665,250 L 690,285 L 650,310 Z M 735,225 L 780,210 L 795,250 L 750,265 Z"/>
+
+    <!-- Distinctive Mishad M. -->
+    <path
+        android:fillColor="#FFF4F7FF"
+        android:pathData="M 280,735 L 280,350 C 280,320 310,302 337,320 L 512,448 L 687,320 C 714,302 744,320 744,350 L 744,735 L 650,735 L 650,455 L 512,555 L 374,455 L 374,735 Z"/>
+
+    <!-- Sweeping violet play/motion accent crossing the M. -->
+    <path
+        android:fillColor="#FFB62CFF"
+        android:pathData="M 265,790 C 390,665 565,560 790,480 C 680,565 510,690 265,790 Z"/>
+    <path
+        android:fillColor="#FF245BFF"
+        android:pathData="M 265,790 C 380,705 510,625 640,565 C 530,645 405,725 265,790 Z"/>
 </vector>
