@@ -111,7 +111,12 @@ object HallOfFameScreen : Screen {
       community = community.copy(loading = true, failed = false)
       launch {
         repository.contributors(forceRefresh = refreshRequest > 0)
-          .onSuccess { contributors = CreditsState(entries = it, loading = false) }
+          .onSuccess {
+            contributors = CreditsState(
+              entries = it.filterNot { contributor -> contributor.displayName.lowercase(Locale.ROOT) in featuredLogins },
+              loading = false,
+            )
+          }
           .onFailure { contributors = contributors.copy(loading = false, failed = true) }
       }
       launch {
@@ -128,7 +133,10 @@ object HallOfFameScreen : Screen {
         repository.communityMembers(forceRefresh = refreshRequest > 0)
           .onSuccess { entries ->
             community = CreditsState(
-              entries = entries.filterNot { it.login.lowercase(Locale.ROOT) in leadLogins },
+              entries = entries.filterNot {
+                it.login.lowercase(Locale.ROOT) in leadLogins ||
+                  it.login.lowercase(Locale.ROOT) in featuredLogins
+              },
               loading = false,
             )
           }
@@ -189,65 +197,19 @@ object HallOfFameScreen : Screen {
             }
             index++
 
-            item(key = "creators", span = { GridItemSpan(maxLineSpan) }) {
-              Column(verticalArrangement = Arrangement.spacedBy(AppConnectedShapeTokens.spacing)) {
-                HallOfFameLeadCard(
-                  name = "MarlboroAdvance",
-                  handle = "marlboro-advance",
-                  tag = stringResource(R.string.hall_of_fame_original_developer),
-                  avatarUrl = "https://avatars.githubusercontent.com/u/227117361?s=256",
-                  profileUrl = "https://github.com/marlboro-advance",
-                  brush = Brush.linearGradient(
-                    listOf(colors.primaryContainer, colors.secondaryContainer.copy(alpha = 0.85f)),
-                  ),
-                  contentColor = colors.onPrimaryContainer,
-                  shape = rememberConnectedShape(0, 2, ConnectedLayout.Vertical),
-                )
-                HallOfFameLeadCard(
-                  name = "Ritesh Pandit",
-                  handle = "Riteshp2001",
-                  tag = stringResource(R.string.hall_of_fame_maintainer),
-                  avatarUrl = "https://avatars.githubusercontent.com/u/87899750?s=256",
-                  profileUrl = "https://github.com/Riteshp2001",
-                  brush = Brush.linearGradient(
-                    listOf(colors.secondaryContainer.copy(alpha = 0.9f), colors.surfaceContainerHigh),
-                  ),
-                  contentColor = colors.onSecondaryContainer,
-                  shape = rememberConnectedShape(1, 2, ConnectedLayout.Vertical),
-                )
-              }
-            }
-            index++
-
-            item(key = "featured:header", span = { GridItemSpan(maxLineSpan) }) {
-              SectionHeader(
-                icon = { Icon(Icons.RoundedFilled.Star, null, Modifier.size(24.dp), tint = colors.primary) },
-                title = stringResource(R.string.hall_of_fame_featured_contributors),
-                subtitle = stringResource(R.string.hall_of_fame_featured_subtitle),
-                trailing = {
-                  ViewAllPill(
-                    onClick = {
-                      showAll = true
-                      scope.launch { gridState.animateScrollToItem(allHeaderIndex[0]) }
-                    },
-                  )
-                },
+            item(key = "mishad", span = { GridItemSpan(maxLineSpan) }) {
+              HallOfFameLeadCard(
+                name = "Mishad",
+                handle = "mmishad6-design",
+                tag = stringResource(R.string.hall_of_fame_mishad_developer),
+                avatarUrl = "https://avatars.githubusercontent.com/u/271561859?s=256",
+                profileUrl = "https://github.com/mmishad6-design",
+                brush = Brush.linearGradient(
+                  listOf(colors.primaryContainer, colors.secondaryContainer.copy(alpha = 0.85f)),
+                ),
+                contentColor = colors.onPrimaryContainer,
+                shape = rememberConnectedShape(0, 1, ConnectedLayout.Vertical),
               )
-            }
-            index++
-
-            item(key = "featured:profiles", span = { GridItemSpan(maxLineSpan) }) {
-              HallOfFameTopThree(featuredContributors) { contributor, tileModifier, shape ->
-                HallOfFameSpotlightCard(
-                  name = contributor.name,
-                  subtitle = "@${contributor.login}",
-                  badge = stringResource(R.string.hall_of_fame_contributor_badge),
-                  avatarUrl = "https://avatars.githubusercontent.com/u/${contributor.avatarId}?s=256",
-                  profileUrl = "https://github.com/${contributor.login}",
-                  modifier = tileModifier,
-                  shape = shape,
-                )
-              }
             }
             index++
 
@@ -327,6 +289,69 @@ object HallOfFameScreen : Screen {
                 avatarUrl = contributor.avatarUrl,
                 profileUrl = contributor.profileUrl,
               )
+            }
+
+            item(key = "special-thanks", span = { GridItemSpan(maxLineSpan) }) {
+              Column(
+                modifier = Modifier
+                  .fillMaxWidth()
+                  .clip(RoundedCornerShape(20.dp))
+                  .background(colors.surfaceContainerLow)
+                  .padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+              ) {
+                Text(
+                  text = stringResource(R.string.hall_of_fame_special_thanks),
+                  style = MaterialTheme.typography.titleLarge,
+                  fontWeight = FontWeight.Bold,
+                  color = colors.onSurface,
+                )
+                featuredContributors.forEach { contributor ->
+                  Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(10.dp),
+                  ) {
+                    Icon(Icons.RoundedFilled.Star, null, Modifier.size(18.dp), tint = colors.primary)
+                    Text(
+                      text = contributor.name,
+                      style = MaterialTheme.typography.bodyLarge,
+                      color = colors.onSurface,
+                    )
+                  }
+                }
+              }
+            }
+
+            item(key = "community-links", span = { GridItemSpan(maxLineSpan) }) {
+              Column(
+                modifier = Modifier
+                  .fillMaxWidth()
+                  .clip(RoundedCornerShape(20.dp))
+                  .background(colors.surfaceContainerLow)
+                  .padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+              ) {
+                Text(
+                  text = stringResource(R.string.ui_community),
+                  style = MaterialTheme.typography.titleLarge,
+                  fontWeight = FontWeight.Bold,
+                  color = colors.onSurface,
+                )
+                TextButton(
+                  onClick = { runCatching { uriHandler.openUri("https://t.me/mpvmx") } },
+                  modifier = Modifier.fillMaxWidth(),
+                ) {
+                  Text(stringResource(R.string.ui_telegram_channel))
+                  Icon(Icons.RoundedFilled.ChevronRight, null, modifier = Modifier.size(18.dp))
+                }
+                TextButton(
+                  onClick = { runCatching { uriHandler.openUri("https://t.me/mpvmxofficial") } },
+                  modifier = Modifier.fillMaxWidth(),
+                ) {
+                  Text(stringResource(R.string.ui_telegram_group))
+                  Icon(Icons.RoundedFilled.ChevronRight, null, modifier = Modifier.size(18.dp))
+                }
+              }
             }
 
             item(key = "github", span = { GridItemSpan(maxLineSpan) }) {

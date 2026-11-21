@@ -123,16 +123,23 @@ jobs:
             unzip -t "$apk" >/dev/null
             "$apksigner" verify --verbose "$apk" >/dev/null
           done
-          arm64_apk="$(find "$out" -maxdepth 1 -type f -name '*arm64-v8a*.apk' | head -n 1)"
+          standalone_arm64_apk="$out/app-standard-arm64-v8a-standalone-preview.apk"
           universal_apk="$(find "$out" -maxdepth 1 -type f -name '*universal*.apk' | head -n 1)"
-          test -n "$arm64_apk"
+          test -s "$standalone_arm64_apk"
           test -n "$universal_apk"
-          arm64_entries="$(unzip -Z1 "$arm64_apk")"
+          standalone_entries="$(unzip -Z1 "$standalone_arm64_apk")"
           universal_entries="$(unzip -Z1 "$universal_apk")"
-          grep -Fq 'lib/arm64-v8a/' <<< "$arm64_entries"
+          grep -Fq 'lib/arm64-v8a/' <<< "$standalone_entries" || { echo "::error::Standalone ARM64 APK is missing arm64-v8a native libraries"; exit 1; }
+          for abi in armeabi-v7a x86 x86_64; do
+            if grep -Fq "lib/$abi/" <<< "$standalone_entries"; then
+              echo "::error::Standalone ARM64 APK unexpectedly contains $abi native libraries"
+              exit 1
+            fi
+          done
           for abi in arm64-v8a armeabi-v7a x86 x86_64; do
             grep -Fq "lib/$abi/" <<< "$universal_entries" || { echo "::error::Universal APK missing $abi native libraries"; exit 1; }
           done
+          echo "Standalone ARM64 APK size: $(du -h "$standalone_arm64_apk" | cut -f1)"
           echo 'APK ZIP integrity, signatures, and native ABI payloads verified.'
 
       - name: Upload all APKs as workflow artifact

@@ -443,8 +443,8 @@ object PreferencesScreen : Screen {
             SettingsDestination(
               title = stringResource(R.string.pref_hall_of_fame_title),
               summary = stringResource(R.string.pref_hall_of_fame_summary),
-              icon = Icons.RoundedFilled.Star,
-              screen = HallOfFameScreen,
+              icon = Icons.RoundedFilled.Info,
+              screen = DeveloperInfoScreen,
             ),
           ),
       ),

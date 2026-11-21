@@ -4,6 +4,7 @@ import {
   Send,
   Users,
   BookOpen,
+  Coffee,
   Check,
   Cpu,
   Download,
@@ -510,6 +511,14 @@ const builds = [
               <span class="contact-label">Community Group</span>
               <strong>mpvmx Community</strong>
               <span class="contact-action">Join the discussion <ArrowRight size={15} /></span>
+            </a>
+            <a class="contact-card" href="https://bscscan.com/address/0x33D54Fe1bb30657De7214B0581cA6D8fC9e65b8D" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon"><Coffee size={22} /></span>
+              <span class="contact-label">Treat Me a Coffee</span>
+              <strong>BNB Smart Chain · BEP-20</strong>
+              <strong class="wallet-address">0x33D54Fe1bb30657De7214B0581cA6D8fC9e65b8D</strong>
+              <span class="wallet-network-warning">Send only through BNB Smart Chain (BEP-20).</span>
+              <span class="contact-action">View wallet on BscScan <ArrowRight size={15} /></span>
             </a>
           </div>
         </div>
@@ -1848,6 +1857,18 @@ const builds = [
     color: var(--text-muted);
     font-size: 0.82rem;
     font-weight: 600;
+  }
+
+  .contact-card .wallet-network-warning {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    line-height: 1.45;
+  }
+
+  .contact-card .wallet-address {
+    font-size: 0.76rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
   }
 
   .contact-card strong {
